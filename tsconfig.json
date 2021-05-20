@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "module": "commonjs",
+    "target": "es2017",
+    "strictBindCallApply": true,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "inlineSourceMap": true,
+    "moduleResolution": "Node",
+    "removeComments": true,
+    "typeRoots": ["typing", "node_modules/@types"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./typing/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "build"]
+}

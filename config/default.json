@@ -1,0 +1,12 @@
+{
+  "LOG_LEVEL": "info",
+  "JWT_SECRET": "key",
+  "JWT_SECRET_REFRESH": "key-refresh",
+  "PORT": "5000",
+  "MONGODB_URL": "mongodb+srv://developrer1:1RBNtNTFaCk1FAhj@cluster1.1s6am.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "REDIS_URL": {
+    "host": "redis-16016.c92.us-east-1-3.ec2.cloud.redislabs.com",
+    "port": 16016,
+    "password": "VXAZ5fwWMNhe4ft"
+  }
+}
