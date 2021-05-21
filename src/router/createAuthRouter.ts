@@ -3,7 +3,7 @@ import * as authController from '../controller/authController';
 
 export default () => {
   const router = express.Router();
-  router.post('/registration/email', authController.registration);
+  router.post('/registration', authController.registration);
   router.post('/login', authController.login);
   return router;
 };

@@ -17,7 +17,7 @@ export async function registration({
 }> {
   const emailUser = await userService.findByEmail(email);
   if (emailUser) {
-    throw new Error('');
+    throw new Error('this email address already exists');
   }
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(password, salt);
@@ -46,9 +46,10 @@ export async function login({
   if (!user) {
     throw new ConsistencyError({});
   }
-  const isMatch = bcrypt.compare(password, user.hashPassword);
 
-  if (isMatch) throw new Error('unable to login');
+  const isMatch = await bcrypt.compare(password, user.hashPassword);
+
+  if (!isMatch) throw new Error('unable to login');
 
   const tokens = await jwtService.createTokens(user);
   return {

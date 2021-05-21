@@ -10,7 +10,9 @@ export default () =>
   (
     err: Error,
     req: express.Request & { payload: Payload },
-    res: express.Response
+    res: express.Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    next: express.NextFunction
   ) => {
     const failureId = new ObjectId().toHexString();
     return Promise.reject(err)
@@ -33,9 +35,9 @@ export default () =>
             stack: error.stack,
           },
         });
-        return res.status(500).json({
+        return res.status(500).send({
           error: {
-            message: err.message,
+            message: error.message,
             failureId,
           },
         });
