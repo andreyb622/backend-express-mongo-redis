@@ -1,0 +1,7 @@
+  --require should
+  --reporter dot
+  --ui bdd
+  --require source-map-support/register
+  --recursive
+  --timeout 20000
+  --exit

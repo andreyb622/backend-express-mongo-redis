@@ -1,5 +1,7 @@
 import * as mongodb from 'mongodb';
-import getMongoDb from '../helpers/getMongoDb';
+
+import getMongoDb from '../component/getMongoDb';
+
 import User from '../model/User';
 import { CreateModel, UpdateModel } from '../util';
 

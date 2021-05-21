@@ -3,6 +3,7 @@ import * as mongodb from 'mongodb';
 import * as userService from '../service/userService';
 import * as jwtService from '../service/jwtService';
 import ConsistencyError from '../error/ConsistencyError';
+import User from '../model/User';
 
 export async function registration({
   email,
@@ -10,7 +11,10 @@ export async function registration({
 }: {
   email: string;
   password: string;
-}) {
+}): Promise<{
+  user: User;
+  tokens: { accesToken: string; refreshToken: string };
+}> {
   const emailUser = await userService.findByEmail(email);
   if (emailUser) {
     throw new Error('');
@@ -31,7 +35,13 @@ export async function login({
 }: {
   email: string;
   password: string;
-}) {
+}): Promise<{
+  user: User;
+  tokens: {
+    accesToken: string;
+    refreshToken: string;
+  };
+}> {
   const user = await userService.findByEmail(email);
   if (!user) {
     throw new ConsistencyError({});
@@ -51,7 +61,13 @@ export async function refreshTokens({
   refreshToken,
 }: {
   refreshToken: string;
-}) {
+}): Promise<{
+  user: User;
+  tokens: {
+    accesToken: string;
+    refreshToken: string;
+  };
+}> {
   const payload = await jwtService.verifyRefrshToken(refreshToken);
   const user = await userService.findById(new mongodb.ObjectId(payload.userId));
   if (!user) {

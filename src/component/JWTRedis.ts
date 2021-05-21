@@ -10,7 +10,7 @@ import {
 import TokenInvalidError from '../error/TokenInvalidError';
 import TokenDestroyedError from '../error/TokenDestroyedError';
 
-function generateId(length: number) {
+function generateId(length: number): string {
   let result = '';
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -35,7 +35,7 @@ export default class JWTRedis {
     this.redisClient = redisClient;
   }
 
-  public sign = async <T extends object & { jti?: string }>(
+  public sign = async <T extends Record<string, string> & { jti?: string }>(
     payload: T,
     secretOrPrivateKey: Secret,
     options?: SignOptions
@@ -46,6 +46,7 @@ export default class JWTRedis {
       secretOrPrivateKey,
       options
     );
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const decoded: any = jsonwebtoken.decode(token);
     const key = this.options.prefix + jti;
     if (decoded.exp) {
@@ -66,7 +67,7 @@ export default class JWTRedis {
     return !!(await this.redisClient.del(key));
   };
 
-  public verify<T extends object & { jti?: string }>(
+  public verify<T extends Record<string, string> & { jti?: string }>(
     token: string,
     secretOrPublicKey: string | Buffer | GetPublicKeyOrSecret,
     options?: VerifyOptions

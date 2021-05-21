@@ -1,11 +1,12 @@
-import logger from './helpers/logger';
-import createApp from './helpers/createApp';
-import createServer from './helpers/createServer';
+import * as config from 'config';
+import logger from './component/logger';
+import createApp from './component/createApp';
+import createServer from './component/createServer';
 
 const app = createApp();
 const server = createServer(app);
 
-const PORT = 8080;
+const PORT = config.get('PORT');
 
 server.listen(PORT, () => {
   logger.info(`Server started on ported: ${PORT}`);

@@ -16,12 +16,22 @@
     "inlineSourceMap": true,
     "moduleResolution": "Node",
     "removeComments": true,
-    "typeRoots": ["typing", "node_modules/@types"],
+    "typeRoots": [
+      "typing",
+      "node_modules/@types"
+    ],
     "baseUrl": ".",
     "paths": {
-      "*": ["./typing/*"]
+      "*": [
+        "./typing/*"
+      ]
     }
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "build"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }

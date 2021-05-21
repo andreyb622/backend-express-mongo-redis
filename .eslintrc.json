@@ -20,6 +20,7 @@
     "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "prettier", "import"],
+  "ignorePatterns": ["test"],
   "rules": {
     "prettier/prettier": "error",
     "no-underscore-dangle": "off",
@@ -27,14 +28,12 @@
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["warn"],
     "no-shadow": "off",
-    "@typescript-eslint/no-shadow": ["warn"],
-    "@typescript-eslint/explicit-function-return-type": [
+    "@typescript-eslint/no-shadow": [
       "warn",
-      {
-        "allowExpressions": true,
-        "allowTypedFunctionExpressions": true
-      }
+      { "ignoreFunctionTypeParameterNameValueShadow": true }
     ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -42,25 +41,5 @@
         "ts": "never"
       }
     ]
-    // "import/order": [
-    //   "error",
-    //   {
-    //     "newlines-between": "never",
-    //     "groups": [
-    //       ["builtin", "external"],
-    //       ["internal", "parent", "sibling", "index"]
-    //     ]
-    //   }
-    // ]
   }
-  // "settings": {
-  //   "import/parsers": {
-  //     "@typescript-eslint/parser": [".ts"]
-  //   },
-  //   "import/resolver": {
-  //     "node": {
-  //       "extensions": [".js", ".jsx", ".ts", ".tsx"]
-  //     }
-  //   }
-  // }
 }
