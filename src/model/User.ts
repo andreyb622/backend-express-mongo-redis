@@ -7,6 +7,7 @@ type User = {
   version: number;
   hashPassword: string;
   email: string;
+  deleted?: boolean;
 };
 
 export default User;

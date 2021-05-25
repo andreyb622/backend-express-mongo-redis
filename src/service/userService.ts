@@ -15,9 +15,16 @@ export async function create(user: CreateModel<User>): Promise<User> {
   return userDao.create(user);
 }
 
-export async function update(
+export async function updateUserById(
   userId: mongodb.ObjectId,
   user: UpdateModel<User>
 ): Promise<User | void> {
   return userDao.updateById(userId, user);
+}
+
+export async function deleteUserById(
+  userId: mongodb.ObjectId,
+  user: UpdateModel<User>
+) {
+  return userDao.deleteById(userId, user);
 }

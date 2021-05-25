@@ -2,9 +2,9 @@ import * as IORedis from 'ioredis';
 import logger from './logger';
 
 const redisClient = new IORedis({
-  host: 'redis-16016.c92.us-east-1-3.ec2.cloud.redislabs.com',
-  port: 16016,
-  password: 'VXAZ5fwWMNhe4ft',
+  host: 'redis-18852.c55.eu-central-1-1.ec2.cloud.redislabs.com',
+  port: 18852,
+  password: 'j4Ax0sSKWzYhjseEW3pa0s7ZPzYdveZ7',
 });
 
 redisClient.on('connect', () => {

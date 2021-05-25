@@ -43,3 +43,11 @@ export function updateById(
       return result.value;
     });
 }
+
+export function deleteById(userId: mongodb.ObjectId, user: UpdateModel<User>) {
+  return getCollection()
+    .findOneAndUpdate({ _id: userId }, { $set: { ...user, deleted: true } })
+    .then((result) => {
+      return result.value;
+    });
+}
